@@ -1,5 +1,5 @@
 import os
-from utils import clearLogs, setFilename, parseByType, addToList, printSportStat, setPlayerList, deleteFromList
+from utils import clearLogs, setFilename, parseByType, addToList, printSportStat, setPlayerList, deleteFromList, saveListToFile
 
 
 appRunning = 0
@@ -42,6 +42,11 @@ def deleteAthlete():
     print("--------------------")
     deleteFromList()
 
+def saveToFile():
+    clearLogs()
+    print("Save Changes To File")
+    print("--------------------")
+    saveListToFile()
 
 def handleMenu(choice):
 
@@ -52,7 +57,7 @@ def handleMenu(choice):
     elif(choice == 3):
         deleteAthlete()
     elif(choice == 4):
-        print("4")
+        saveToFile()
     elif(choice == 5):
         print("5")
     elif(choice == 6):

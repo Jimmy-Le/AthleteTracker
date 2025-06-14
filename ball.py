@@ -25,7 +25,7 @@ class BasketballPlayer(BallPlayer):
         print(self.endorsement)
     
     def __str__(self):
-        text = f"BasketballPlayer: {self.name}, {self.age}, {self.team_name}, {self.jersey_number}, {self.country}, {self.salary}, {self.endorsement}, {self.three_point_pct}, {self.rebounds}"
+        text = f"BasketballPlayer: {self.name},{self.age},{self.team_name},{self.jersey_number},{self.country if self.country is not None else ""},{self.salary if self.salary is not None else ""},{self.endorsement if self.endorsement is not None else ""},{self.three_point_pct if self.three_point_pct is not None else ""},{self.rebounds if self.rebounds is not None else ""}\n"
         return text
 
     @staticmethod
@@ -71,7 +71,7 @@ class FootballPlayer(BallPlayer):
         print(self.touchdowns, self.name)
 
     def __str__(self):
-        text = f"FootballPlayer: {self.name}, {self.age}, {self.team_name}, {self.jersey_number}, {self.country}, {self.salary}, {self.endorsement}, {self.touchdowns}, {self.passing_yards}"
+        text = f"FootballPlayer: {self.name},{self.age},{self.team_name},{self.jersey_number},{self.country if self.country is not None else ""},{self.salary if self.salary is not None else ""},{self.endorsement if self.endorsement is not None else ""},{self.touchdowns if self.touchdowns is not None else ""},{self.passing_yards if self.passing_yards is not None else ""}\n"
         return text
 
     @staticmethod

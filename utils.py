@@ -102,14 +102,14 @@ def printSportStat():
 
 def deleteFromList():
     global __playerList
-    __playerList.sort(key=lambda athlete: athlete.name)
+    sortedList = sorted( __playerList, key=lambda athlete: athlete.name)
     printAll()
     print("")
     chosenAthlete = input("Please enter the name of the athlete you wish to delete: ")
 
     foundResults = []
     newList = []
-    for player in __playerList:
+    for player in sortedList:
         if(player.name.lower() == chosenAthlete.lower()):
             foundResults.append(player)
         else:
@@ -133,6 +133,19 @@ def deleteFromList():
             print("Invalid input. Canceling operation...")
 
 
+def saveListToFile():
+    global __playerList
+    result = input("Would you like to save all changes made to the file? (y/n): ")
+    if (result == "y" or result == "Y"):
+        with open(__filename, "w") as file:
+            for player in __playerList:
+                file.write(player.__str__())
+
+        print("Saved File")
+    elif (result == "n" or result == "N"):
+        print("Canceling operation...")
+    else:
+        print("Invalid input. Canceling operation...")
 
 
 
@@ -171,5 +184,6 @@ def addToList(athlete):
 def printAll():
     """Prints all of the athlete stored in the list"""
     global __playerList
-    for item in __playerList:
+    sortedList = sorted( __playerList, key=lambda athlete: athlete.name)
+    for item in sortedList:
         print(item.name)

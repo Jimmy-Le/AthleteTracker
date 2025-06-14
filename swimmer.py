@@ -8,7 +8,7 @@ class Swimmer(Athlete):
         self.personal_best_time = time
 
     def __str__(self):
-        text = f"Swimmer: {self.name}, {self.age}, {self.stroke_style}, {self.country}, {self.salary}, {self.personal_best_time},"
+        text = f"Swimmer: {self.name},{self.age},{self.stroke_style},{self.country if self.country is not None else ""},{self.salary if self.salary is not None else ""},{self.personal_best_time if self.personal_best_time is not None else ""}\n"
         return text
 
     @staticmethod

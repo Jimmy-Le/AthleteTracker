@@ -20,7 +20,7 @@ class HockeyPlayer(Athlete):
         self.skates_size = size 
     
     def __str__(self):
-        text = f"HockeyPlayer: {self.name}, {self.age}, {self.country}, {self.salary}, {self.goals_scored}, {self.stick_brand}, {self.skates_size}"
+        text = f"HockeyPlayer: {self.name},{self.age},{self.country if self.country is not None else ""},{self.salary if self.salary is not None else ""},{self.position.value if self.position is not None else ""},{self.goals_scored if self.goals_scored is not None else ""},{self.stick_brand or ""},{self.skates_size if self.skates_size is not None else ""}\n"
         return text
     
     def printStats(self):
