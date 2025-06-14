@@ -6,7 +6,7 @@ class Athlete:
         self.salary = salary
 
     def printStats(self):
-        print("Name:", self.name)
+        pass
 
     def printEndorsement(self):
         pass

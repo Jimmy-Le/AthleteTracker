@@ -1,5 +1,5 @@
 import os
-from utils import clearLogs, setFilename, parseByType, addToList, printSportStat, setPlayerList, deleteFromList, saveListToFile
+from utils import clearLogs, setFilename, parseByType, addToList, printSportStat, setPlayerList, deleteFromList, saveListToFile, displayAthleteInfo
 
 
 appRunning = 0
@@ -48,6 +48,13 @@ def saveToFile():
     print("--------------------")
     saveListToFile()
 
+def displayInfo():
+    clearLogs
+    print("Display Info")
+    print("--------------------")
+    displayAthleteInfo()
+
+
 def handleMenu(choice):
 
     if(choice == 1):
@@ -59,7 +66,7 @@ def handleMenu(choice):
     elif(choice == 4):
         saveToFile()
     elif(choice == 5):
-        print("5")
+        displayInfo()
     elif(choice == 6):
         print("6")
 
@@ -87,9 +94,7 @@ def main():
                 input("Press ENTER to continue: ")
         except Exception as e:
             print("Invalid input, please try again: ", e)
-        # finally:
-        #     print("")
-        #     input("Press ENTER to continue: ")
+
             
 
    

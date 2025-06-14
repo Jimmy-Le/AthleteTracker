@@ -44,6 +44,7 @@ def multiSort(playerList, attributeList):
 
 
 def printSportStat():
+    """This Function will separate the playerlist into the different sports, sort the results and print the required information"""
     hockeyList = []
     basketballList = []
     footballList = []
@@ -101,6 +102,7 @@ def printSportStat():
     
 
 def deleteFromList():
+    """This function will delete all instances of a given Athlete from the memory"""
     global __playerList
     sortedList = sorted( __playerList, key=lambda athlete: athlete.name)
     printAll()
@@ -119,6 +121,7 @@ def deleteFromList():
         print("No Athlete Found")
     else:
         print(f"{len(foundResults)} result(s) found:")
+        print("")
         for chosenAthlete in foundResults:
             print(chosenAthlete)
         print("")
@@ -134,6 +137,7 @@ def deleteFromList():
 
 
 def saveListToFile():
+    """This function will save the player list from memory into the original file"""
     global __playerList
     result = input("Would you like to save all changes made to the file? (y/n): ")
     if (result == "y" or result == "Y"):
@@ -146,6 +150,34 @@ def saveListToFile():
         print("Canceling operation...")
     else:
         print("Invalid input. Canceling operation...")
+
+
+def displayAthleteInfo():
+    global __playerList
+    printAll()
+    print("")
+    chosenAthlete = input("Please enter the name of an Athlete you want to learn more of: ")
+
+    foundResults = []
+    for player in __playerList:
+        if(player.name.lower() == chosenAthlete.lower()):
+            foundResults.append(player)
+    
+    if(len(foundResults) == 0):
+        print("No Athlete Found")
+    else:
+        print(f"{len(foundResults)} result(s) found:")
+        print("")
+        for chosenAthlete in foundResults:
+            print(f"{chosenAthlete.name}'s stats and endorsments: ")
+            chosenAthlete.printStats()
+            chosenAthlete.printEndorsement()
+            print("")
+        print("")
+
+
+
+
 
 
 
