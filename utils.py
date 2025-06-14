@@ -100,6 +100,41 @@ def printSportStat():
     print("")
     
 
+def deleteFromList():
+    global __playerList
+    __playerList.sort(key=lambda athlete: athlete.name)
+    printAll()
+    print("")
+    chosenAthlete = input("Please enter the name of the athlete you wish to delete: ")
+
+    foundResults = []
+    newList = []
+    for player in __playerList:
+        if(player.name.lower() == chosenAthlete.lower()):
+            foundResults.append(player)
+        else:
+            newList.append(player)
+    
+    if(len(foundResults) == 0):
+        print("No Athlete Found")
+    else:
+        print(f"{len(foundResults)} result(s) found:")
+        for chosenAthlete in foundResults:
+            print(chosenAthlete)
+        print("")
+        deletionChoice = input("Would you like to continue deleting all entries? (y/n): ")
+
+        if (deletionChoice == "y" or deletionChoice == "Y"):
+            setPlayerList(newList)
+            print("Deletion completed")
+        elif (deletionChoice == "n" or deletionChoice == "N"):
+            print("Canceling operation...")
+        else:
+            print("Invalid input. Canceling operation...")
+
+
+
+
 
 
 # ------------------------------------ Getters, Setters and Variable Manipulation ------------------------------------
@@ -134,7 +169,7 @@ def addToList(athlete):
     __playerList.append(athlete)
 
 def printAll():
-    """Prints all of the athlete stored in the list (used for debugging)"""
+    """Prints all of the athlete stored in the list"""
     global __playerList
     for item in __playerList:
-        print(item)
+        print(item.name)

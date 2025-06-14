@@ -1,5 +1,5 @@
 import os
-from utils import clearLogs, setFilename, parseByType, addToList, printSportStat, setPlayerList
+from utils import clearLogs, setFilename, parseByType, addToList, printSportStat, setPlayerList, deleteFromList
 
 
 appRunning = 0
@@ -16,17 +16,18 @@ def printMenu():
 
 def parseFile():
     """This function will ask for a file name and parse the data based on the type of athlete"""
-    setPlayerList([])
-    filename = input("Please enter the name of the file:")          # Get file name from user
+    clearLogs()
+    filename = input("Please enter the name of the file: ")          # Get file name from user
     try:
         with open(filename, "r") as file:
+            setPlayerList([])
             setFilename(filename)                                   # Save the file name 
             for line in file:
                 player, data = line.strip().split(":", 1)           # find the type of player
                 splitData = data.strip().split(",")                 # split the rest of the data
                 newAthlete = parseByType(player, splitData)         # Based on the type of player, parse the data accordingly
                 addToList(newAthlete)                               # Add the new athlete to the list
-
+        print("File loaded successfully")
             # printAll()
     except Exception as e:
         print("Error: ", e)
@@ -35,6 +36,11 @@ def printAllStats():
     clearLogs()
     printSportStat()
 
+def deleteAthlete():
+    clearLogs()
+    print("Deleting Athlete:")
+    print("--------------------")
+    deleteFromList()
 
 
 def handleMenu(choice):
@@ -44,7 +50,7 @@ def handleMenu(choice):
     elif(choice == 2):
         printAllStats()
     elif(choice == 3):
-        print("3")
+        deleteAthlete()
     elif(choice == 4):
         print("4")
     elif(choice == 5):
@@ -53,7 +59,7 @@ def handleMenu(choice):
         print("6")
 
     elif(choice == 7):
-        print("Exiting program")
+        print("Exiting program...")
         return 1
     else:
         print("Invalid input, please try again")
@@ -70,11 +76,15 @@ def main():
             choice = int(input("Please enter your choice: "))
 
             appRunning = handleMenu(choice)
+            print("")
+            if(appRunning == 0):
+                print("")
+                input("Press ENTER to continue: ")
         except Exception as e:
             print("Invalid input, please try again: ", e)
-        finally:
-            print("")
-            input("Press Enter to continue")
+        # finally:
+        #     print("")
+        #     input("Press ENTER to continue: ")
             
 
    
