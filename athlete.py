@@ -5,4 +5,11 @@ class Athlete:
         self.country = country
         self.salary = salary
 
+    def printStats(self):
+        print("Name:", self.name)
+
+    def printEndorsement(self):
+        pass
+
+
 
